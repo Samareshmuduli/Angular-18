@@ -1,0 +1,287 @@
+<form [formGroup]="userForm" (ngSubmit)="onSubmit()" class="container mt-5 p-4 bg-light rounded">
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="FirstName">First Name:</label>
+        <input id="FirstName" class="form-control" formControlName="FirstName" type="text" />
+        <div *ngIf="userForm.controls['FirstName'].invalid && userForm.controls['FirstName'].touched" class="text-danger mt-1">
+          First Name is required (min 3 characters).
+        </div>
+      </div>
+  
+      <div class="form-group col-md-6">
+        <label for="LastName">Last Name:</label>
+        <input id="LastName" class="form-control" formControlName="LastName" type="text" />
+        <div *ngIf="userForm.controls['LastName'].invalid && userForm.controls['LastName'].touched" class="text-danger mt-1">
+          Last Name is required (min 3 characters).
+        </div>
+      </div>
+    </div>
+  
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="fatherName">Father's Name:</label>
+        <input id="fatherName" class="form-control" formControlName="fatherName" type="text" />
+        <div *ngIf="userForm.controls['fatherName'].invalid && userForm.controls['fatherName'].touched" class="text-danger mt-1">
+          Father's Name is required .
+        </div>
+      </div>
+  
+      <div class="form-group col-md-6">
+        <label for="motherName">Mother's Name:</label>
+        <input id="motherName" class="form-control" formControlName="motherName" type="text" />
+        <div *ngIf="userForm.controls['motherName'].invalid && userForm.controls['motherName'].touched" class="text-danger mt-1">
+          Mother's Name is required.
+        </div>
+      </div>
+    </div>
+  
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="email">Email:</label>
+        <input id="email" class="form-control" formControlName="email" type="email" />
+        <div *ngIf="userForm.controls['email'].invalid && userForm.controls['email'].touched" class="text-danger mt-1">
+          Please provide a valid email.
+        </div>
+      </div>
+  
+      <div class="form-group col-md-6">
+        <label for="phoneNumber">Phone Number:</label>
+        <input id="phoneNumber" class="form-control" formControlName="phoneNumber" type="text" />
+        <div *ngIf="userForm.controls['phoneNumber'].invalid && userForm.controls['phoneNumber'].touched" class="text-danger mt-1">
+          Please provide a valid 10-digit phone number.
+        </div>
+      </div>
+    </div>
+  
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="currentAddress">Current Address:</label>
+        <input id="currentAddress" class="form-control" formControlName="currentAddress" type="text" />
+        <div *ngIf="userForm.controls['currentAddress'].invalid && userForm.controls['currentAddress'].touched" class="text-danger mt-1">
+          Current Address is required.
+        </div>
+      </div>
+  
+      <div class="form-group col-md-6">
+        <label for="permanentAddress">Permanent Address:</label>
+        <input id="permanentAddress" class="form-control" formControlName="permanentAddress" type="text" />
+        <div *ngIf="userForm.controls['permanentAddress'].invalid && userForm.controls['permanentAddress'].touched" class="text-danger mt-1">
+          Permanent Address is required.
+        </div>
+      </div>
+    </div>
+  
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="dob">Date of Birth:</label>
+        <input id="dob" class="form-control" formControlName="dob" type="date" />
+        <div *ngIf="userForm.controls['dob'].invalid && userForm.controls['dob'].touched" class="text-danger mt-1">
+          Date of Birth is required.
+        </div>
+      </div>
+  
+      <div class="form-group col-md-6">
+        <label for="sex">Sex:</label>
+        <select id="sex" class="form-control" formControlName="sex">
+          <option value="">Select</option>
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+          <option value="Other">Other</option>
+        </select>
+        <div *ngIf="userForm.controls['sex'].invalid && userForm.controls['sex'].touched" class="text-danger mt-1">
+          Sex is required.
+        </div>
+      </div>
+    </div>
+  
+    <div class="form-group">
+      <label for="aadhaarNumber">Aadhaar Number:</label>
+      <input id="aadhaarNumber" class="form-control" formControlName="aadhaarNumber" type="text" />
+      <div *ngIf="userForm.controls['aadhaarNumber'].invalid && userForm.controls['aadhaarNumber'].touched" class="text-danger mt-1">
+        Please provide a valid 12-digit Aadhaar number.
+      </div>
+    </div>
+  
+     
+      <div class="card mb-3">
+        <div class="card-header">Matriculation</div>
+        <div class="card-body">
+          <div class="form-group">
+            <label for="schoolName">School Name</label>
+            <input type="text" id="schoolName" formControlName="schoolName" class="form-control" required>
+          </div>
+          <div class="form-group">
+            <label for="matricPercentage">Percentage</label>
+            <input type="number" id="matricPercentage" formControlName="matricPercentage" class="form-control" required>
+          </div>
+          <div class="form-group">
+            <label for="matricPassingYear">Passing Year</label>
+            <input type="number" id="matricPassingYear" formControlName="matricPassingYear" class="form-control" required>
+          </div>
+        </div>
+      </div>
+  
+     
+      <div class="card mb-3">
+        <div class="card-header">Secondary Education</div>
+        <div class="card-body">
+          <div class="form-group">
+            <label for="collegeNameSec">College Name</label>
+            <input type="text" id="collegeNameSec" formControlName="collegeNameSec" class="form-control" required>
+          </div>
+          <div class="form-group">
+            <label for="secPercentage">Percentage</label>
+            <input type="number" id="secPercentage" formControlName="secPercentage" class="form-control" required>
+          </div>
+          <div class="form-group">
+            <label for="secPassingYear">Passing Year</label>
+            <input type="number" id="secPassingYear" formControlName="secPassingYear" class="form-control" required>
+          </div>
+        </div>
+      </div>
+  
+      <div class="card mb-3">
+        <div class="card-header">Higher Education</div>
+        <div class="card-body">
+          <div class="form-group">
+            <label for="collegeNameHigh">College Name</label>
+            <input type="text" id="collegeNameHigh" formControlName="collegeNameHigh" class="form-control" required>
+          </div>
+          <div class="form-group">
+            <label for="highPercentage">Percentage</label>
+            <input type="number" id="highPercentage" formControlName="highPercentage" class="form-control" required>
+          </div>
+          <div class="form-group">
+            <label for="highPassingYear">Passing Year</label>
+            <input type="number" id="highPassingYear" formControlName="highPassingYear" class="form-control" required>
+          </div>
+        </div>
+      </div>
+      
+      <div class="card mb-3">
+        <div class="card-header">Company Details</div>
+        <div class="card-body">
+          <div class="form-group">
+            <label for="companyName">Company Name</label>
+            <input type="text" id="companyName" formControlName="companyName" class="form-control" required>
+          </div>
+          <div class="form-group">
+            <label for="jobTitle">Job Title</label>
+            <input type="text" id="jobTitle" formControlName="jobTitle" class="form-control" required>
+          </div>
+          <div class="form-group">
+            <label for="experienceYears">Experience (Years)</label>
+            <input type="number" id="experienceYears" formControlName="experienceYears" class="form-control" required>
+          </div>
+          <div class="form-group">
+            <label for="jobStartDate">Job Start Date</label>
+            <input type="date" id="jobStartDate" formControlName="jobStartDate" class="form-control" required>
+          </div>
+          <div class="form-group">
+            <label for="jobEndDate">Job End Date</label>
+            <input type="date" id="jobEndDate" formControlName="jobEndDate" class="form-control">
+          </div>
+        </div>
+      </div>
+  
+     
+      <div class="card mb-3">
+        <div class="card-header">Skills</div>
+        <div class="card-body">
+          <div class="form-group">
+            <label for="skills">Skills</label>
+            <input type="text" id="skills" formControlName="skills" class="form-control" required>
+          </div>
+        </div>
+      </div>
+  
+  
+    <button type="submit" class="btn btn-primary btn-block" [disabled]="userForm.invalid">Submit</button>
+  </form> 
+
+
+
+
+
+  const firebaseConfig = {
+
+    apiKey: "AIzaSyDDMx0aMDnWzuA7lp9bfo5eQx5080NUGuQ",
+  
+    authDomain: "samaresh-muduli.firebaseapp.com",
+  
+    projectId: "samaresh-muduli",
+  
+    storageBucket: "samaresh-muduli.appspot.com",
+  
+    messagingSenderId: "982133624088",
+  
+    appId: "1:982133624088:web:74ca6638a3aa34a426a26d",
+  
+    measurementId: "G-1HRT22RFC0"
+  
+  };
+  
+
+  import { Component } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { ReactiveFormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { DataService } from '../data.service';
+
+@Component({
+  selector: 'app-signup',
+  standalone: true,
+  imports: [ReactiveFormsModule,CommonModule],
+  templateUrl: './signup.component.html',
+  styleUrls: ['./signup.component.css']
+})
+export class SignupComponent {
+  signupForm: FormGroup;
+
+  constructor(private fb: FormBuilder, private router: Router,private dataService:DataService) {
+    // Initialize the form group with validation rules
+    this.signupForm = this.fb.group({
+      name: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(6)]]
+    });
+  }
+
+
+  onSignUpSubmit() {
+    // if (this.signupForm.valid) {
+    
+     
+    //   this.router.navigate(['PersonalDetailsComponent']);
+    // } else {
+    
+    //   this.signupForm.markAllAsTouched();
+    try {
+      if (this.signupForm) {
+        this.dataService.saveUser(this.signupForm).subscribe(
+          (registerResponse:any)=>{
+          console.log('registerResponse :', registerResponse);
+          this.router.navigate(['PersonalDetailsComponent']);
+          },
+        (error:any)=>{
+          console.log("regeroor",error);
+        }
+        )
+       
+        // this.router.navigate(['login']);
+      } else {
+        console.error('Form is invalid');
+      }
+    } catch (error) {
+      console.log(error)
+
+    }
+  
+    console.log('User Data:', this.signupForm);
+    // this.router.navigate(['LoginComponent']);
+
+    
+  }
+ 
+}

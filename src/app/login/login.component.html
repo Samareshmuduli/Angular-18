@@ -1,0 +1,54 @@
+<div class="container d-flex justify-content-center align-items-center vh-100">
+  <div class="card p-4 shadow-lg" style="width: 350px;">
+    <h3 class="text-center mb-4">Sign In</h3>
+
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <div class="mb-3">
+        <label for="email" class="form-label">Email*</label>
+        <input type="email" id="email" formControlName="email" class="form-control" placeholder="Enter your email"
+          autocomplete="off">
+        <!-- Error Message for Email -->
+
+        <div *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched" class="text-danger">
+          <small *ngIf="loginForm.get('email')?.errors?.['required']">Email is required.</small>
+          <small *ngIf="loginForm.get('email')?.errors?.['email']">Invalid email format.</small>
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="password" class="form-label">Password*</label>
+        <input type="password" id="password" formControlName="password" class="form-control"
+          placeholder="Enter your password" autocomplete="new-password">
+        <!-- Error Message for Password -->
+
+        <div *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched" class="text-danger">
+          <small *ngIf="loginForm.get('password')?.errors?.['required']">Password is required.</small>
+
+        </div>
+      </div>
+      <button class="btn btn-primary w-100" type="submit">Sign In</button>
+    </form>
+
+    <div class="text-center my-3">
+   
+      <!-- <div class="gloginbtn" *ngIf="!isButtonLoaded">
+        <p>Loading Google Sign-In...</p>
+      </div> -->
+      <!-- <div class="gloginbtn" >
+        <asl-google-signin-button type="standard" size="large" style="width: 100%; height: 50px;">
+        </asl-google-signin-button>
+      </div> -->
+      <div class="text-center my-3">
+        <p class="text-muted">or</p>       
+        <div id="google-button"></div>
+      </div>
+    </div>
+    
+    
+   
+
+    <p class="text-center text-muted mt-3">Don't have an account?
+      <a [routerLink]="['/signUp']">Sign Up</a>
+    </p>
+  </div>
+</div>

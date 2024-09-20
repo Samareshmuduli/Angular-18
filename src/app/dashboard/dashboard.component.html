@@ -1,0 +1,74 @@
+<div class="container-fluid">
+  <!-- Navigation Bar -->
+ 
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light d-flex justify-content-between">
+      <!-- Dashboard in the center -->
+      <div class="d-flex justify-content-center ">
+        <a class="navbar-brand mx-auto fs-1" >ShowDetails</a> <!-- Centered Dashboard -->
+      </div>
+    
+      
+      <div class=" ms-auto align-items-center justify-content-between">
+        <!-- Display the user name -->
+        <a class="navbar-brand mx-auto fs-2">{{ userName }}</a>
+      </div> 
+      <!-- User name and Logout button -->
+      <div class="ms-auto align-items-center">
+        <!-- Display the user name -->
+        <button class="btn btn-outline-danger" (click)="logout()">Sign Out</button> <!-- Logout button -->
+      </div>
+    </nav>
+
+
+
+
+  <!-- Personal Details -->
+  <div class="card mb-3">
+    <div class="card-header">Personal Details</div>
+    <div class="card-body">
+      <p><strong>First Name:</strong> {{ userForm.get('FirstName')?.value }}</p>
+      <p><strong>Last Name:</strong> {{ userForm.get('LastName')?.value }}</p>
+      <p><strong>Father's Name:</strong> {{ userForm.get('fatherName')?.value }}</p>
+      <p><strong>Mother's Name:</strong> {{ userForm.get('motherName')?.value }}</p>
+      <p><strong>Email:</strong> {{ userForm.get('email')?.value }}</p>
+      <p><strong>Phone Number:</strong> {{ userForm.get('phoneNumber')?.value }}</p>
+      <p><strong>Current Address:</strong> {{ userForm.get('currentAddress')?.value }}</p>
+      <p><strong>Permanent Address:</strong> {{ userForm.get('permanentAddress')?.value }}</p>
+      <p><strong>Date of Birth:</strong> {{ userForm.get('dob')?.value }}</p>
+      <p><strong>Gender:</strong> {{ userForm.get('sex')?.value }}</p>
+      <p><strong>Aadhaar Number:</strong> {{ userForm.get('aadhaarNumber')?.value }}</p>
+    </div>
+  </div>
+
+  <!-- Educational Details -->
+  <div class="card mb-3">
+    <div class="card-header">Educational Details</div>
+    <div class="card-body">
+      <p><strong>School Name:</strong> {{ userForm.get('schoolName')?.value }}</p>
+      <p><strong>Matric Percentage:</strong> {{ userForm.get('matricPercentage')?.value }}</p>
+      <p><strong>Matric Passing Year:</strong> {{ userForm.get('matricPassingYear')?.value }}</p>
+      <p><strong>Secondary College Name:</strong> {{ userForm.get('collegeNameSec')?.value }}</p>
+      <p><strong>Secondary Percentage:</strong> {{ userForm.get('secPercentage')?.value }}</p>
+      <p><strong>Secondary Passing Year:</strong> {{ userForm.get('secPassingYear')?.value }}</p>
+      <p><strong>Higher College Name:</strong> {{ userForm.get('collegeNameHigh')?.value }}</p>
+      <p><strong>Higher Percentage:</strong> {{ userForm.get('highPercentage')?.value }}</p>
+      <p><strong>Higher Passing Year:</strong> {{ userForm.get('highPassingYear')?.value }}</p>
+    </div>
+  </div>
+
+  <!-- Company and Skills Details -->
+  <div class="card mb-3">
+    <div class="card-header">Company and Skills Details</div>
+    <div class="card-body">
+      <p><strong>Company Name:</strong> {{ userForm.get('companyName')?.value }}</p>
+      <p><strong>Job Title:</strong> {{ userForm.get('jobTitle')?.value }}</p>
+      <p><strong>Experience Years:</strong> {{ userForm.get('experienceYears')?.value }}</p>
+      <p><strong>Job Start Date:</strong> {{ userForm.get('jobStartDate')?.value }}</p>
+      <p><strong>Job End Date:</strong> {{ userForm.get('jobEndDate')?.value || 'Ongoing' }}</p>
+      <p><strong>Skills:</strong> {{ userForm.get('skills')?.value }}</p>
+      <p><strong>Skills Certificate:</strong> {{ userForm.get('skillsCertificate')?.value }}</p>
+      <!-- <img [src]=" userForm.get('skillsCertificate')?.value " alt="Skills Certificate" class="img-fluid mt-2" /> -->
+    </div>
+  </div>
+</div>

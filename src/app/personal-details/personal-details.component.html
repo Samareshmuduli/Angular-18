@@ -1,0 +1,518 @@
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
+<form [formGroup]="userForm" (ngSubmit)="onSubmit()" class="container mt-5 p-4 bg-light rounded">
+  <div *ngIf="currentStep === 1">
+    <!-- Step 1: Personal Details -->
+    <div class="accordion" id="accordionPanelsStayOpenExample">
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button" type="button" data-bs-toggle="collapse"
+            data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true"
+            aria-controls="panelsStayOpen-collapseOne">
+            <h3>Personal Details</h3>
+          </button>
+        </h2>
+        <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show">
+          <div class="accordion-body">
+
+
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="FirstName">First Name:*</label>
+                <input id="FirstName" class="form-control" formControlName="FirstName" type="text" />
+                <div *ngIf="userForm.controls['FirstName'].invalid && userForm.controls['FirstName'].touched"
+                  class="text-danger mt-1">
+                  <small *ngIf="userForm.get('FirstName')?.errors?.['required']">First Name is required</small>
+                  <small *ngIf="userForm.get('FirstName')?.errors?.['minlength']">Minimum 3 and maximum 15 characters
+                    required</small>
+                </div>
+              </div>
+              <div class="form-group col-md-6">
+                <label for="LastName">Last Name:*</label>
+                <input id="LastName" class="form-control" formControlName="LastName" type="text" required />
+                <div *ngIf="userForm.controls['LastName'].invalid && userForm.controls['LastName'].touched"
+                  class="text-danger mt-1">
+                  <small *ngIf="userForm.get('LastName')?.errors?.['required']">Last Name is required</small>
+                  <small *ngIf="userForm.get('LastName')?.errors?.['minlength']">Minimum 3 and maximum 15 characters
+                    required</small>
+                </div>
+              </div>
+            </div>
+            <!-- More fields for personal details... -->
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="fatherName">Father Name:*</label>
+                <input id="fatherName" class="form-control" formControlName="fatherName" type="text" required />
+                <div *ngIf="userForm.controls['fatherName'].invalid && userForm.controls['fatherName'].touched"
+                  class="text-danger mt-1">
+                  <small *ngIf="userForm.get('fatherName')?.errors?.['required']">Father Name is required </small>
+
+                </div>
+              </div>
+
+              <div class="form-group col-md-6">
+                <label for="motherName">Mother Name:*</label>
+                <input id="motherName" class="form-control" formControlName="motherName" type="text" required />
+                <div *ngIf="userForm.controls['motherName'].invalid && userForm.controls['motherName'].touched"
+                  class="text-danger mt-1">
+                  <small>Mother Name is required.</small>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="email">Email:*</label>
+                <input id="email" class="form-control" formControlName="email" type="email" required  email/>
+                <div *ngIf="userForm.controls['email'].invalid && userForm.controls['email'].touched"
+                  class="text-danger mt-1">
+                  <small *ngIf="userForm.get('email')?.errors?.['pattern']">Invalid email format.</small>
+                  <small *ngIf="userForm.get('email')?.errors?.['required']">Email is required.</small>
+                  <!-- <small> Please provide a valid email.</small> -->
+                </div>
+              </div>
+
+              <div class="form-group col-md-6">
+                <label for="phoneNumber">Phone Number:*</label>
+                <input id="phoneNumber" class="form-control" formControlName="phoneNumber" type="text" required />
+                <div *ngIf="userForm.controls['phoneNumber'].invalid && userForm.controls['phoneNumber'].touched"
+                  class="text-danger mt-1">
+                  <!-- <small>Please provide a valid 10-digit phone number.</small> -->
+                  <small *ngIf="userForm.get('phoneNumber')?.errors?.['pattern']">Please provide a valid 10-digit phone number.</small>
+                  <small *ngIf="userForm.get('phoneNumber')?.errors?.['required']"> phone number is required.</small>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="currentAddress">Current Address:*</label>
+                <input id="currentAddress" class="form-control" formControlName="currentAddress" type="text" required />
+                <div *ngIf="userForm.controls['currentAddress'].invalid && userForm.controls['currentAddress'].touched"
+                  class="text-danger mt-1">
+                  <small>Current Address is required.</small>
+                </div>
+              </div>
+
+              <div class="form-group col-md-6">
+                <label for="permanentAddress">Permanent Address:*</label>
+                <input id="permanentAddress" class="form-control" formControlName="permanentAddress" type="text"
+                  required />
+                <div
+                  *ngIf="userForm.controls['permanentAddress'].invalid && userForm.controls['permanentAddress'].touched"
+                  class="text-danger mt-1">
+                  <small>Permanent Address is required.</small>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="dob">Date of Birth:*</label>
+                <input id="dob" class="form-control" formControlName="dob" type="date" min="1980-01-01" max="2010-01-01"
+                  required />
+                <div *ngIf="userForm.controls['dob'].invalid && userForm.controls['dob'].touched"
+                  class="text-danger mt-1">
+                  <small>Date of Birth is required.</small>
+                </div>
+              </div>
+
+              <div class="form-group col-md-6">
+                <label for="sex">Gender:*</label>
+                <select id="sex" class="form-control" formControlName="sex" required>
+                  <option value="">Select</option>
+                  <option value="Male">Male</option>
+                  <option value="Female">Female</option>
+                  <option value="Other">Other</option>
+                </select>
+                <div *ngIf="userForm.controls['sex'].invalid && userForm.controls['sex'].touched"
+                  class="text-danger mt-1">
+                  <small>Gender is required.</small>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="aadhaarNumber">Aadhaar Number:*</label>
+              <input id="aadhaarNumber" class="form-control" formControlName="aadhaarNumber" type="text" required />
+              <div *ngIf="userForm.controls['aadhaarNumber'].invalid && userForm.controls['aadhaarNumber'].touched"
+                class="text-danger mt-1">
+                <!-- <small>Please provide a valid 12-digit Aadhaar number.</small> -->
+                <small *ngIf="userForm.get('aadhaarNumber')?.errors?.['pattern']">Please provide a valid 12-digit Aadhaar number.</small>
+                <small *ngIf="userForm.get('aadhaarNumber')?.errors?.['required']"> Aadhaar number is required.</small>
+              </div>
+            </div>
+            @if (this.userForm.get('FirstName')?.valid && 
+            this.userForm.get('LastName')?.valid && this.userForm.get('fatherName')?.valid && 
+            this.userForm.get('motherName')?.valid && this.userForm.get('email')?.valid &&
+            this.userForm.get('phoneNumber')?.valid && this.userForm.get('currentAddress')?.valid &&
+            this.userForm.get('permanentAddress')?.valid && this.userForm.get('dob')?.valid &&
+            this.userForm.get('sex')?.valid && this.userForm.get('aadhaarNumber')?.valid){
+              <button type="button" class="btn btn-primary" (click)="nextStep()">Next</button>
+            }@else{
+              <button type="button" class="btn btn-primary" disabled="userForm.invalid">Next</button>
+            }
+            <!-- <button type="button" class="btn btn-primary" (click)="nextStep()">Next</button> -->
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Step 2: Educational Details -->
+  <div *ngIf="currentStep === 2">
+    <div class="accordion" id="accordionPanelsStayOpenExample">
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button" type="button" data-bs-toggle="collapse"
+            data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true"
+            aria-controls="panelsStayOpen-collapseOne">
+            <h3>Educational Details</h3>
+          </button>
+        </h2>
+        <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show">
+          <div class="accordion-body">
+            <div class="accordion" id="sub-accordionExample">
+              <div class="accordion-item">
+                  <h2 class="accordion-header" id="sub-headingOne">
+                      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#sub-collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                     Matriculation
+                      </button>
+                  </h2>
+                  <div id="sub-collapseOne" class="accordion-collapse collapse show" aria-labelledby="sub-headingOne" data-bs-parent="#sub-accordionExample">
+                      <div class="accordion-body">
+                      <div class="card mb-3">
+                       
+                        <div class="card-body">
+                          <div class="form-group">
+                            <label for="schoolName">School Name*</label>
+                            <input type="text" id="schoolName" formControlName="schoolName" class="form-control" required>
+                            <div *ngIf="userForm.controls['schoolName'].invalid && userForm.controls['schoolName'].touched"
+                              class="text-danger mt-1">
+                              <small>School Name is required.</small>
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label for="matricPercentage">Percentage*</label>
+                            <input type="number" id="matricPercentage" formControlName="matricPercentage" class="form-control"
+                              required>
+                            <div
+                              *ngIf="userForm.controls['matricPercentage'].invalid && userForm.controls['matricPercentage'].touched"
+                              class="text-danger mt-1">
+                              <small>Percentage should be between 0 and 100.</small>
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label for="matricPassingYear">Passing Year*</label>
+                            <input type="number" id="matricPassingYear" formControlName="matricPassingYear" class="form-control"
+                              required>
+                            <div
+                              *ngIf="userForm.controls['matricPassingYear'].invalid && userForm.controls['matricPassingYear'].touched"
+                              class="text-danger mt-1">
+                              <small>Passing Year is required.</small>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      </div>
+                  </div>
+              </div>
+              <div class="accordion-item">
+                  <h2 class="accordion-header" id="sub-headingTwo">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sub-collapseTwo" aria-expanded="false" aria-controls="sub-collapseTwo">
+                        Secondary Education
+                      </button>
+                  </h2>
+                  <div id="sub-collapseTwo" class="accordion-collapse collapse" aria-labelledby="sub-headingTwo" data-bs-parent="#sub-accordionExample">
+                      <div class="accordion-body">
+                      <div class="card mb-3">
+                       
+                        <div class="card-body">
+                          <div class="form-group">
+                            <label for="collegeNameSec">College Name*</label>
+                            <input type="text" id="collegeNameSec" formControlName="collegeNameSec" class="form-control" required>
+                            <div
+                              *ngIf="userForm.controls['collegeNameSec'].invalid && userForm.controls['collegeNameSec'].touched"
+                              class="text-danger mt-1">
+                              <small>College Name is required.</small>
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label for="secPercentage">Percentage*</label>
+                            <input type="number" id="secPercentage" formControlName="secPercentage" class="form-control" required>
+                            <div *ngIf="userForm.controls['secPercentage'].invalid && userForm.controls['secPercentage'].touched"
+                              class="text-danger mt-1">
+                              <small>Percentage should be between 0 and 100.</small>
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label for="secPassingYear">Passing Year*</label>
+                            <input type="number" id="secPassingYear" formControlName="secPassingYear" class="form-control"
+                              required>
+                            <div
+                              *ngIf="userForm.controls['secPassingYear'].invalid && userForm.controls['secPassingYear'].touched"
+                              class="text-danger mt-1">
+                              <small>Passing Year is required.</small>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      </div>
+                  </div>
+              </div>
+              <div class="accordion-item">
+                  <h2 class="accordion-header" id="sub-headingThree">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sub-collapseThree" aria-expanded="false" aria-controls="sub-collapseThree">
+                        Higher Education
+                      </button>
+                  </h2>
+                  <div id="sub-collapseThree" class="accordion-collapse collapse" aria-labelledby="sub-headingThree" data-bs-parent="#sub-accordionExample">
+                      <div class="accordion-body">
+                      <div class="card mb-3">
+                     
+                        <div class="card-body">
+                          <div class="form-group">
+                            <label for="collegeNameHigh">College Name*</label>
+                            <input type="text" id="collegeNameHigh" formControlName="collegeNameHigh" class="form-control"
+                              required>
+                            <div
+                              *ngIf="userForm.controls['collegeNameHigh'].invalid && userForm.controls['collegeNameHigh'].touched"
+                              class="text-danger mt-1">
+                              <small>College Name is required.</small>
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label for="highPercentage">Percentage*</label>
+                            <input type="number" id="highPercentage" formControlName="highPercentage" class="form-control"
+                              required>
+                            <div
+                              *ngIf="userForm.controls['highPercentage'].invalid && userForm.controls['highPercentage'].touched"
+                              class="text-danger mt-1">
+                              <small>Percentage should be between 0 and 100.</small>
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label for="highPassingYear">Passing Year*</label>
+                            <input type="number" id="highPassingYear" formControlName="highPassingYear" class="form-control"
+                              required>
+                            <div
+                              *ngIf="userForm.controls['highPassingYear'].invalid && userForm.controls['highPassingYear'].touched"
+                              class="text-danger mt-1">
+                              <small>Passing Year is required.</small>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+
+             @if(this.userForm.get('schoolName')?.valid &&
+             this.userForm.get('matricPercentage')?.valid && this.userForm.get('matricPassingYear')?.valid &&
+             this.userForm.get('collegeNameSec')?.valid && this.userForm.get('secPercentage')?.valid &&
+             this.userForm.get('secPassingYear')?.valid && this.userForm.get('collegeNameHigh')?.valid &&
+             this.userForm.get('highPercentage')?.valid && this.userForm.get('highPassingYear')?.valid){
+               <button type="button" class="btn btn-primary" (click)="nextStep()">Next</button>
+             }@else {
+              <button type="button" class="btn btn-primary" disabled="userForm.invalid">Next</button>
+             }
+            <button type="button" class="btn btn-secondary" (click)="prevStep()">Back</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Step 3: Company and Skills Details -->
+  <div *ngIf="currentStep === 3">
+    <div class="accordion" id="accordionPanelsStayOpenExample">
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button" type="button" data-bs-toggle="collapse"
+            data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true"
+            aria-controls="panelsStayOpen-collapseOne">
+            <h3>Professional Details</h3>
+          </button>
+        </h2>
+        <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show">
+          <div class="accordion-body">
+
+
+            <!-- Company Details -->
+            <div class="accordion" id="sub-accordionExample">
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="sub-headingOne">
+                  <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#sub-collapseOne" aria-expanded="true" aria-controls="sub-collapseOne">
+                    Company Details
+                  </button>
+                </h2>
+                <div id="sub-collapseOne" class="accordion-collapse collapse show" aria-labelledby="sub-headingOne" data-bs-parent="#sub-accordionExample">
+                  <div class="accordion-body">
+                    <div class="card mb-3">
+                      <div class="card-body">
+                        <div class="form-group">
+                          <label for="companyName">Company Name:*</label>
+                          <input type="text" id="companyName" formControlName="companyName" class="form-control" required>
+                          <div *ngIf="userForm.controls['companyName'].invalid && userForm.controls['companyName'].touched" class="text-danger mt-1">
+                            <small>Company Name is required.</small>
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <label for="jobTitle">Job Title:*</label>
+                          <input type="text" id="jobTitle" formControlName="jobTitle" class="form-control" required>
+                          <div *ngIf="userForm.controls['jobTitle'].invalid && userForm.controls['jobTitle'].touched" class="text-danger mt-1">
+                            <small>Job Title is required.</small>
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <label for="experienceYears">Experience (Years):*</label>
+                          <input type="number" id="experienceYears" formControlName="experienceYears" class="form-control" required>
+                          <div *ngIf="userForm.controls['experienceYears'].invalid && userForm.controls['experienceYears'].touched" class="text-danger mt-1">
+                            <small>Experience is required and must be a valid number.</small>
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <label for="jobStartDate">Job Start Date:*</label>
+                          <input type="date" id="jobStartDate" formControlName="jobStartDate" class="form-control" required>
+                          <div *ngIf="userForm.controls['jobStartDate'].invalid && userForm.controls['jobStartDate'].touched" class="text-danger mt-1">
+                            <div *ngIf="userForm.get('jobStartDate')?.errors?.['required']">
+
+                              <small>Job Start Date must be a valid date less than today.</small>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <label for="jobEndDate">Job End Date:*</label>
+                          <input type="date" id="jobEndDate" formControlName="jobEndDate" class="form-control">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="sub-headingTwo">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sub-collapseTwo" aria-expanded="false" aria-controls="sub-collapseTwo">
+                    Skills
+                  </button>
+                </h2>
+                <div id="sub-collapseTwo" class="accordion-collapse collapse" aria-labelledby="sub-headingTwo" data-bs-parent="#sub-accordionExample">
+                  <div class="accordion-body">
+                    <div class="card mb-3">
+                      <div class="card-body">
+                        <div class="form-group">
+                          <label for="skills">Skills:*</label>
+                          <input type="text" id="skills" formControlName="skills" class="form-control" required>
+                          <div *ngIf="userForm.controls['skills'].invalid && userForm.controls['skills'].touched" class="text-danger mt-1">
+                            <small>Skills are required.</small>
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <label for="skillsCertificate">Upload Skills Certificate:*</label>
+                         <div class="d-flex gap-2">
+                          <input type="file" id="skillsCertificate" (change)="onFileChange($event, 'skillsCertificate')" class="form-control">
+                          <button (click)="uploadFile()">Upload</button>
+                         </div>
+                          <div *ngIf="userForm.controls['skillsCertificate'].invalid && userForm.controls['skillsCertificate'].touched" class="text-danger mt-1">
+                            <small>Skills Certificate is required.</small>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            @if (this.userForm.get('companyName')?.valid &&
+            this.userForm.get('jobTitle')?.valid && this.userForm.get('experienceYears')?.valid &&
+            this.userForm.get('jobStartDate')?.valid && this.userForm.get('skills')?.valid &&this.userForm.get('skillsCertificate')?.valid){
+              <button type="button" class="btn btn-primary" (click)="nextStep()">Next</button>
+            }@else{
+              <button type="button" class="btn btn-primary" disabled="userForm.invalid">Next</button> 
+             }
+            <!-- <input id="profilePhoto" type="file" /> -->
+            <!-- <button type="button" class="btn btn-primary" (click)="nextStep()">Next</button> -->
+            <button type="button" class="btn btn-secondary" (click)="prevStep()">Back</button>
+           
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- <button type="submit" class="btn btn-primary">Submit</button> -->
+  </div>
+  <!-- Step 4: Review Submitted Data -->
+  <div *ngIf="currentStep === 4">
+    <div class="accordion" id="accordionPanelsStayOpenExample">
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button" type="button" data-bs-toggle="collapse"
+            data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true"
+            aria-controls="panelsStayOpen-collapseOne">
+            <h3>Review Submitted Data</h3>
+          </button>
+        </h2>
+        <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show">
+          <div class="accordion-body">
+
+            <div class="card mb-3">
+              <div class="card-header">Personal Details</div>
+              <div class="card-body">
+                <p><strong>First Name:</strong> {{ userForm.get('FirstName')?.value }}</p>
+                <p><strong>Last Name:</strong> {{ userForm.get('LastName')?.value }}</p>
+                <p><strong>Father's Name:</strong> {{ userForm.get('fatherName')?.value }}</p>
+                <p><strong>Mother's Name:</strong> {{ userForm.get('motherName')?.value }}</p>
+                <p><strong>Email:</strong> {{ userForm.get('email')?.value }}</p>
+                <p><strong>Phone Number:</strong> {{ userForm.get('phoneNumber')?.value }}</p>
+                <p><strong>Current Address:</strong> {{ userForm.get('currentAddress')?.value }}</p>
+                <p><strong>Permanent Address:</strong> {{ userForm.get('permanentAddress')?.value }}</p>
+                <p><strong>Date of Birth:</strong> {{ userForm.get('dob')?.value }}</p>
+                <p><strong>Gender:</strong> {{ userForm.get('sex')?.value }}</p>
+                <p><strong>Aadhaar Number:</strong> {{ userForm.get('aadhaarNumber')?.value }}</p>
+              </div>
+            </div>
+
+            <div class="card mb-3">
+              <div class="card-header">Educational Details</div>
+              <div class="card-body">
+                <p><strong>School Name:</strong> {{ userForm.get('schoolName')?.value }}</p>
+                <p><strong>Matric Percentage:</strong> {{ userForm.get('matricPercentage')?.value }}</p>
+                <p><strong>Matric Passing Year:</strong> {{ userForm.get('matricPassingYear')?.value }}</p>
+                <p><strong>Secondary College Name:</strong> {{ userForm.get('collegeNameSec')?.value }}</p>
+                <p><strong>Secondary Percentage:</strong> {{ userForm.get('secPercentage')?.value }}</p>
+                <p><strong>Secondary Passing Year:</strong> {{ userForm.get('secPassingYear')?.value }}</p>
+                <p><strong>Higher College Name:</strong> {{ userForm.get('collegeNameHigh')?.value }}</p>
+                <p><strong>Higher Percentage:</strong> {{ userForm.get('highPercentage')?.value }}</p>
+                <p><strong>Higher Passing Year:</strong> {{ userForm.get('highPassingYear')?.value }}</p>
+              </div>
+            </div>
+           
+            <div class="card mb-3">
+              <div class="card-header">Company and Skills Details</div>
+              <div class="card-body">
+                <p><strong>Company Name:</strong> {{ userForm.get('companyName')?.value }}</p>
+                <p><strong>Job Title:</strong> {{ userForm.get('jobTitle')?.value }}</p>
+                <p><strong>Experience Years:</strong> {{ userForm.get('experienceYears')?.value }}</p>
+                <p><strong>Job Start Date:</strong> {{ userForm.get('jobStartDate')?.value }}</p>
+                <p><strong>Job End Date:</strong> {{ userForm.get('jobEndDate')?.value || 'Ongoing' }}</p>
+                <p><strong>Skills:</strong> {{ userForm.get('skills')?.value }}</p>
+                <p><strong>skillsCertificate:</strong> {{ userForm.get('skillsCertificate')?.value }}</p>
+          
+            <!-- [src]="'../../assests/' + uploadedImagePath"  -->
+             <!-- '../../assets/public/assets/' + uploadedImagePath"  -->
+                <img [src]="fullImageUrl" alt="Skills Certificate" class="img-fluid mt-2" />
+             
+              </div>
+            </div>
+
+            <button type="button" class="btn btn-secondary" (click)="prevStep()">Back</button>
+            <button type="submit" class="btn btn-primary" >Submit</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</form>

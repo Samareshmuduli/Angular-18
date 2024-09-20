@@ -1,0 +1,26 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid d-flex justify-content-between">
+    
+    <!-- Logo on the left -->
+    <div class="align-items-center">
+      <img src="../../assets/public/download.jpeg" alt="Logo" class="img-fluid" style="height: 50px;">
+    </div>
+
+    <!-- Dashboard title in the center -->
+    <div class="d-flex justify-content-center flex-grow-1">
+      <a class="navbar-brand fs-1" >Dashboard</a>
+    </div>
+
+    <!-- User name and buttons on the right -->
+    <div class="d-flex align-items-center">
+      <!-- User name -->
+      <a class="navbar-brand fs-5 me-3">{{ userName }}</a>
+
+      <!-- Sign Out button -->
+      <button class="btn btn-outline-danger me-3" (click)="logout()">Sign Out</button>
+
+      <!-- Add button -->
+     
+    </div>
+  </div>
+</nav>
